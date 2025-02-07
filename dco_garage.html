@@ -1,0 +1,961 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>DCO Garage</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #121212;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .sidebar {
+            width: 240px;
+            background-color: #1e1e1e;
+            height: 100vh;
+            position: fixed;
+            top: 0;
+            left: 0;
+            padding-top: 53px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .sidebar a {
+            display: block;
+            padding: 15px 20px;
+            color: #ffffff;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar a:hover {
+            background-color: #444;
+        }
+
+        .sidebar .active {
+            background-color: #f90;
+            color: #000;
+        }
+
+        .content {
+            margin-left: 240px;
+            padding: 80px 20px 20px;
+            transition: margin-left 0.3s;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .content h1 {
+            color: #f90;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            background-color: #1e1e1e;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        table th, table td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #444;
+        }
+
+        table th {
+            background-color: #333;
+            color: #f90;
+        }
+
+        table tr:nth-child(even) {
+            background-color: #292929;
+        }
+
+        table tr:hover {
+            background-color: #444;
+        }
+
+        a {
+            color: #f90;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #ffb84d;
+        }
+
+        ul {
+            padding: 0;
+            list-style: none;
+            margin: 0;
+        }
+
+        ul li {
+            margin-bottom: 10px;
+        }
+
+        ul li:last-child {
+            margin-bottom: 0;
+        }
+
+		.top-menu {
+            display: flex;
+            justify-content: flex-start;
+            background-color: #1e1e1e;
+            padding: 10px 20px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+            position: fixed;
+            top: 49px;
+            left: 240px;
+            right: 0;
+            z-index: 999;
+        }
+
+        .top-menu a {
+            margin-right: 20px;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+
+        .top-menu a:hover {
+            background-color: #444;
+        }
+
+        .top-menu .active {
+            background-color: #f90;
+            color: #000;
+        }
+
+        .search-bar {
+            margin-top: 0px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+
+        .search-bar input {
+            padding: 4px;
+            border-radius: 5px;
+            border: 2px solid #f90;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            width: 130px;
+        }
+
+        .search-bar input::placeholder {
+            color: #888;
+        }
+		
+		.search-bar1 {
+            margin-top: -50px;
+            display: flex;
+            justify-content: flex-start;
+            gap: 10px;
+        }
+		
+	    .search-bar1 input {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #444;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            width: 230px;
+        }
+
+        .search-bar input::placeholder {
+            color: #888;
+        }
+
+                footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            text-align: center;
+            padding: 10px;
+            background-color: #1e1e1e;
+            color: #ffffff;
+            font-size: 14px;
+        }
+		
+		.content {
+            padding-bottom: 50px; /* Adds space to prevent content from being hidden by the footer */
+        }
+		input, button {
+            padding: 10px;
+            margin: 5px 0;
+        }
+        button {
+            background-color: #f90;
+            color: #000;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: #ffb84d;
+        }
+    </style>
+</head>
+<body>
+
+.search-bar input::placeholder {
+            color: #888;
+        }
+    </style>
+</head>
+<body>
+
+<header style="background-color: #1e1e1e; padding: 10px; text-align: center; color: #ffffff; font-size: 24px; position: fixed; top: 0; left: 240px; right: 0; z-index: 1000;">WELCOME TO DCO GARAGE !!! <i class="fa fa-coffee" style="font-size:24px;color:red"></i> <!---<i style="font-size:24px" class="fa">&#xf0f4;</i>--> </header>
+<div class="sidebar">
+	<!--<h4 style="color: #ffffff; text-align: center; padding: 10px 0;">WELCOME TO DCO GARAGE!</h4>-->
+    <a href="#" onclick="showContent('dashboard', this)" class="active">DASHBOARD</a>
+    <a href="#" onclick="showContent('sev-monitor', this)">SEV MONITOR</a>
+    <!--<a href="#" onclick="showContent('queue-monitor', this)">QUEUE MONITOR</a>-->
+    <a href="#" onclick="showContent('toolkit', this)">TOOLKIT</a>
+</div>
+
+<div id="dashboard" class="content">
+    <!--<h1>DASHBOARD</h1>-->
+
+<div class="top-menu">
+    <a href="#" onclick="showTopMenu('common-bookmarks', this)" class="active">COMMON BOOKMARKS</a>
+    <a href="#" onclick="showTopMenu('wiki-resources', this)">WIKI RESOURCES</a>
+    <a href="#" onclick="showTopMenu('domains-collection', this)">BOOKMARKS MANAGER</a>
+    <a href="#" onclick="showTopMenu('updates', this)">UPDATES</a>
+    <div class="search-bar" id="bookmarksSearchBar" style="display: flex;">
+        <input type="text" id="bookmarksSearchInput" placeholder="Search bookmarks..." onkeyup="searchBookmarks()">
+    </div>
+	<div class="search-bar" id="wikiSearchBar" style="display: none;">
+        <input type="text" id="wikiSearchInput" placeholder="Search WIKI..." onkeyup="searchwikiresource()">
+    </div>
+</div>
+
+    <div id="common-bookmarks">
+        <h1>Common Bookmarks</h1> 
+       
+        <table id="bookmarksTable">
+            <thead>
+                <tr>
+                    <th>DESCRIPTION</th>
+                    <th>LINK</th>
+                    <!--- Removed it to so that it cant be edit on the main home page!!!
+					<th>ACTIONS</th>
+					-->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Rows will be dynamically populated -->
+            </tbody>
+        </table>
+        
+    </div>
+
+
+    <div id="wiki-resources" class="hidden">
+	<br>
+	<p align="center" style="color:orange;"><b>This page is undercontruction; More links to WIKI Resources are coming!!!</b></p>
+        <table>
+            <thead>
+                <tr>
+                    <th>WIKI RESOURCES</th>
+                    <th>LINK</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Boost Electron to Receive and Install Racks</td>
+                    <td><a href="https://w.amazon.com/bin/view/AWS_InfraOps_Global_Process_Owners/Rack_Install/Using_Boost_To_Receive_Racks/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Patching Guide</td>
+                    <td><a href="https://w.amazon.com/bin/view/Users/galate/Quip/PatchingGuide/" target="_blank">w.amazon.com</a></td>
+                </tr>
+                <tr>
+                    <td>Patching Diagrams</td>
+                    <td><a href="https://w.amazon.com/index.php/Mihaleff/Patching_Diagrams" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Hostclass Slayer (HCS)</td>
+                    <td><a href="https://w.amazon.com/bin/view/Core/ESIDev/HostClassSlayer" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Decommission Old TOR Hostname</td>
+                    <td><a href="https://w.amazon.com/bin/view/DecommissionOldTORhostname/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>DCODiag Wiki</td>
+                    <td><a href="https://w.amazon.com/index.php/DCOSE/Projects/dcodiag" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Pilsner</td>
+                    <td><a href="https://w.amazon.com/bin/view/DCO-TNT/Projects/Tavern/Pilsner/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Admiral</td>
+                    <td><a href="https://w.amazon.com/index.php/EC2/Admiral" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>AWS Region Build</td>
+                    <td><a href="https://w.amazon.com/index.php/AWSRegionBuilds" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>HardwareVetting</td>
+                    <td><a href="https://w.amazon.com/index.php/HWEng/ServerQualityTeam/HardwareVetting" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>MAP - DCOSE</td>
+                    <td><a href="https://w.amazon.com/index.php/Public/DCO/DCOpile/map" target="_blank">w.amazon.com</a></td>
+                </tr>				
+				<tr>
+                    <td>NEW SITE LAUNCH GUIDANCE FOR DCO</td>
+                    <td><a href="https://w.amazon.com/bin/view/GRU/DCO-New-Site-Launch/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>AEA setup on iPhone and Android</td>
+                    <td><a href="https://w.amazon.com/bin/view/AEA-Mobile/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Humboldt16 Devices Information</td>
+                    <td><a href="https://w.amazon.com/bin/view/AWS-KMS/Internal/Projects/Humboldt-FIPS-140-3/dco_instructions/h16_all_devices_in_rack_inspection/#HOptionAforSideTamperSealforSmall2C5-deviceRacks28Draft21212129" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Boost Platform - Engagement</td>
+                    <td><a href="https://w.amazon.com/bin/view/AWSDirectedWork/BoostPlatform/Engagement/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Boost Platform Wiki</td>
+                    <td><a href="https://w.amazon.com/bin/view/AWSDirectedWork/BoostPlatform/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>EC2 Bare Metal Internals for Carbon</td>
+                    <td><a href="https://w.amazon.com/bin/view/EC2/Nucleus/Carbon/bare-metal/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Risk Assessment Tool</td>
+                    <td><a href="https://w.amazon.com/bin/view/AWSHealthandSafety/TechandTools/RiskAssessment" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Rack Correction Scan In Boost</td>
+                    <td><a href="https://w.amazon.com/bin/view/IAD_ID_INSTALL/Rack_Handoff/Rack_Correction_Scan/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>WMW Rack ATSPSU & BBU LED Decoder</td>
+                    <td><a href="https://w.amazon.com/bin/view/DCEO/ICN/WMW/LED_Status_checker/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>7S</td>
+                    <td><a href="https://w.amazon.com/bin/view/AWS/DCC/AMER/PHX/7S/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Amazon Client Imaging Solution (ACIS)</td>
+                    <td><a href="https://w.amazon.com/bin/view/ClientEng/ACIS/GettingStarted/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>AKL Server Lifter - Stacker E200T</td>
+                    <td><a href="https://w.amazon.com/bin/view/AKL_InfraOps/DCO/Equipmentandtools/Serverlift/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Wiping/Rebuild - Celestica 8000, 8060, 8200</td>
+                    <td><a href="https://w.amazon.com/bin/view/Users/penhaig/ID_WEB-SSH/Wipe_Celestica/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td>Wiping/Rebuild - ACCTON</td>
+                    <td><a href="https://w.amazon.com/bin/view/Users/penhaig/ID_WEB-SSH/Wipe_Accton/" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<!--<tr>
+                    <td></td>
+                    <td><a href="" target="_blank">w.amazon.com</a></td>
+                </tr>
+				<tr>
+                    <td></td>
+                    <td><a href="" target="_blank">w.amazon.com</a></td>
+                </tr>-->
+				
+            </tbody>
+        </table>
+    </div>
+
+    <div id="domains-collection" class="hidden">
+        
+		<!-- Form to Add New Bookmark -->
+        <div>
+            <h3>Add New Bookmark</h3>
+            <input type="text" id="newDescription" placeholder="Enter description">
+            <input type="text" id="newLink" placeholder="Enter link (e.g., https://example.com)">
+            <input type="text" id="newAltText" placeholder="Enter alt text (e.g., Click Here)">
+            <button onclick="addBookmark()">Add</button>
+        </div>
+		<br><br>
+		<style>
+    /* Modal Styles */
+    #passwordModal {
+      display: none; /* Initially hidden */
+      position: fixed;
+      z-index: 1;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+    }
+    .modal-content {
+      background-color: #fefefe;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 300px;
+      text-align: center;
+      border-radius: 5px;
+    }
+    .modal-content input {
+      width: 80%;
+      padding: 10px;
+      margin: 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 16px;
+    }
+    .modal-content button {
+      padding: 10px 20px;
+      border: none;
+      background-color: #007bff;
+      color: white;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+    .modal-content button:hover {
+      background-color: #0056b3;
+    }
+  </style>
+</head>
+<body>
+  <h3>Edit/Delete Bookmark</h3>
+  <button id="secureButton">Bookmark Manager</button>
+  <!-- Password Modal -->
+  <div id="passwordModal">
+    <div class="modal-content">
+      <p>Enter the passkey:</p>
+      <input type="password" id="passwordInput" placeholder="Enter passkey" />
+      <button id="submitPassword">Submit</button>
+    </div>
+  </div>
+  <script>
+    const secureButton = document.getElementById('secureButton');
+    const passwordModal = document.getElementById('passwordModal');
+    const passwordInput = document.getElementById('passwordInput');
+    const submitPassword = document.getElementById('submitPassword');
+    // Show the modal when the secure button is clicked
+    secureButton.addEventListener('click', () => {
+      passwordModal.style.display = 'block'; // Make the modal visible
+      passwordInput.value = ''; // Clear any previous input
+      passwordInput.focus(); // Automatically focus the password field
+    });
+	passwordInput.addEventListener('keydown', (event) => {
+      if (event.key === 'Enter') {
+        submitPassword.click();
+      }
+    });
+    // Handle password submission
+    submitPassword.addEventListener('click', async () => {
+      const passkey = passwordInput.value;
+      if (passkey) {
+        try {
+          const response = await fetch('https://dashboard-secure-login.onrender.com/validate', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ passkey: passkey })
+          });
+          const result = await response.json();
+          if (result.success) {
+            window.open(result.path, '_blank'); // Open the plain path
+          } else {
+            alert(result.message || "Access denied.");
+          }
+        } catch (error) {
+          console.error("Error:", error);
+          alert("An error occurred. Please try again.");
+        } finally {
+          passwordModal.style.display = 'none'; // Hide the modal
+        }
+      } else {
+        alert("Passkey is required.");
+      }
+    });
+    // Close the modal when clicking outside of it
+    window.addEventListener('click', (event) => {
+      if (event.target === passwordModal) {
+        passwordModal.style.display = 'none'; // Hide the modal
+      }
+    });
+  </script>
+    </div>
+
+    <div id="updates" class="hidden">
+        <p align="center" style="color:orange;">Current Version: [v1.3]</p>
+    <div class="announcement">
+        <h1>🚀 ANNOUNCEMENT: DCO Garage is Now Live! 🚀</h1>
+        <p>We’re thrilled to introduce <strong>DCO Garage</strong> – a unified hub that provides seamless access to <strong>DCO Tools, Wiki Resources, SEV Monitor, and Tookkit (commands),</strong> all in one convenient location! 🚀</p>
+		
+		<br>
+		
+        <h2>🔹 What’s New?</h2>
+        <ul>
+            <li>✅ <strong>DCO Tools & Resources</strong> – Quick access to essential tools & documentation. 🛠️</li>
+			<li>✅ <strong>Wiki & Knowledge Base</strong> – Find links to wiki-resources in a centralized place. 📖</li>
+			<li>✅ <strong>Sev Monitor Tab</strong> – Includes real-time Slack message updates! [Coming Soon] 📢</li>                    
+            <li>✅ <strong>User-Friendly Interface</strong> – Navigate and access key features effortlessly.</li>
+            <li>✅ <strong>Performance Enhancements</strong> – Optimized for a smoother experience.</li>
+			<li>✅ <strong>Search Bar</strong> – Optimized for a smooth & fast search experience. 🔎</li>
+        </ul>
+        <br>
+        <h2>📋 How to Access?</h2>
+        <p>Click the link below to start exploring:</p>
+        <p><a href="https://drive-render.corp.amazon.com/view/hpotlia@/AKLScripts/dco_garage.html"><strong>DCO Garage</strong></a></p>
+        <br>
+        <h2 class="feedback">📬 Share Your Feedback!</h2>
+        <p>Your input is crucial to making <strong>DCO Garage</strong> even better. If you encounter any issues or have suggestions for improvements, please share your feedback via:</p>
+        <ul>
+            <!--<li>Google Form: <a href="#">Submit Feedback</a></li>-->
+            <li>Slack Channel: <strong>...</strong></li>
+            <li>Direct message to: <strong>@hpotlia</strong></li>
+        </ul>
+        
+        <p><strong>Let’s make this a powerful tool together! 💪</strong></p>
+		
+		<p><strong>Happy exploring!</strong></p>
+    </div>
+		
+    </div>
+	    <script>
+        const API_BASE_URL = 'https://dashboard-backend-zu2y.onrender.com';
+        // Load bookmarks from the backend
+        async function loadBookmarks() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/bookmarks`);
+                const data = await response.json();
+                if (data.success) {
+                    const tableBody = document.querySelector('#bookmarksTable tbody');
+                    tableBody.innerHTML = ''; // Clear existing rows
+                    data.bookmarks.forEach((bookmark, index) => {
+                        const row = document.createElement('tr');
+                        row.innerHTML = `
+                            <td>${bookmark.description}</td>
+                            <td><a href="${bookmark.link}" target="_blank">${bookmark.altText || 'Visit Link'}</a></td>
+                            <!---<td>
+                                <button onclick="editBookmark(${index}, '${bookmark.description}', '${bookmark.link}', '${bookmark.altText}')">Edit</button>
+                                <button onclick="deleteBookmark(${index})">Delete</button>
+                            </td>-->
+                        `;
+                        tableBody.appendChild(row);
+                    });
+                } else {
+                    alert('Failed to load bookmarks');
+                }
+            } catch (error) {
+                console.error('Error loading bookmarks:', error);
+            }
+        }
+		// Add a new bookmark with strict duplicate checking
+		async function addBookmark() {
+			const description = document.getElementById('newDescription').value.trim();
+			const link = document.getElementById('newLink').value.trim();
+			const altText = document.getElementById('newAltText').value.trim();
+			if (!description || !link || !altText) {
+				alert('Please fill in all the fields: Description, Link, and Alt Text.');
+				return;
+			}
+			try {
+				// Fetch existing bookmarks
+				const response = await fetch(`${API_BASE_URL}/bookmarks`);
+				const data = await response.json();
+				if (data.success) {
+					const existingBookmarks = data.bookmarks;
+					// Check if all three values (description, link, and altText) match an existing bookmark
+					const isDuplicate = existingBookmarks.some(bookmark =>
+						bookmark.description === description ||
+						bookmark.link === link ||
+						bookmark.altText === altText
+					);
+					if (isDuplicate) {
+						alert('This exact bookmark already exists. Please enter a unique one.');
+						return;
+					}
+				}
+				// Proceed with adding if it's unique
+				const addResponse = await fetch(`${API_BASE_URL}/add-bookmark`, {
+					method: 'POST',
+					headers: { 'Content-Type': 'application/json' },
+					body: JSON.stringify({ description, link, altText }),
+				});
+				const addData = await addResponse.json();
+				if (addData.success) {
+					alert('Bookmark added successfully!');
+					loadBookmarks(); // Reload bookmarks after addition
+				} else {
+					alert('Error adding bookmark');
+				}
+			} catch (error) {
+				console.error('Error adding bookmark:', error);
+			}
+		}
+        // Edit a bookmark
+        async function editBookmark(index, currentDescription, currentLink, currentAltText) {
+            const newDescription = prompt('Edit description:', currentDescription);
+            const newLink = prompt('Edit link:', currentLink);
+            const newAltText = prompt('Edit alt text:', currentAltText);
+            if (newDescription && newLink) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/edit-bookmark`, {
+                        method: 'PUT',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ index, description: newDescription, link: newLink, altText: newAltText }),
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        alert('Bookmark updated successfully!');
+                        loadBookmarks();
+                    } else {
+                        alert('Error editing bookmark');
+                    }
+                } catch (error) {
+                    console.error('Error editing bookmark:', error);
+                }
+            }
+        }
+        // Delete a bookmark
+        async function deleteBookmark(index) {
+            if (confirm('Are you sure you want to delete this bookmark?')) {
+                try {
+                    const response = await fetch(`${API_BASE_URL}/delete-bookmark`, {
+                        method: 'DELETE',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ index }),
+                    });
+                    const data = await response.json();
+                    if (data.success) {
+                        alert('Bookmark deleted successfully!');
+                        loadBookmarks();
+                    } else {
+                        alert('Error deleting bookmark');
+                    }
+                } catch (error) {
+                    console.error('Error deleting bookmark:', error);
+                }
+            }
+        }
+        // Load bookmarks when the page loads
+        document.addEventListener('DOMContentLoaded', loadBookmarks);
+    </script>
+</div>
+
+<div id="sev-monitor" class="content hidden">
+    <!--<h1>SEV MONITOR</h1>-->
+    <p align="center" style="color:orange;">Content for Sev Monitor goes here.</p>
+	<p align="center" style="color:orange;">Includes real-time Slack message updates! [Coming Soon] 📢</p>
+</div>
+
+<div id="queue-monitor" class="content hidden">
+    <!--<h1>QUEUE MONITOR</h1>-->
+    <p>Content for Queue Monitor goes here.</p>
+</div>
+
+<div id="toolkit" class="content hidden">
+    <!--<h1>TOOLKIT</h1>-->
+
+    <div class="search-bar1">
+        <input type="text" id="searchInput" placeholder="Search toolkit..." onkeyup="searchToolkit()">
+    </div>
+
+    <table id="toolkitTable">
+        <thead>
+            <tr>
+                <th>CATEGORY</th>
+                <th>DETAILS</th>
+                <th>COMMANDS</th>
+            </tr>
+        </thead>
+        <tbody>
+			<tr>
+                <td>Switch Builder - Wiping/Rebuild</td>
+                <td>Celestica 8000, 8060, 8200</td>
+                <td>Console with one of these baudrates (115200 or 9600)<br><br>Interrupt the boot procedure when the prompt says:<br>
+				TYPE 123 [ENTER] to STOP autoboot<br><br>
+				=>env default -f -a<br>
+				=>setenv -f bootcmd 'run onie_bootcmd'<br>
+				=>setenv onie_fpp sfp_detect<br>
+				=>saveenv<br>
+				=>reset</td>
+            </tr>
+			
+			<tr>
+                <td>Switch Builder - Wiping/Rebuild</td>
+                <td>ACCTON AS 4610</td>
+                <td>Console with one of these baudrates (115200 or 9600)<br><br>
+				Select startup mode. If no selection is made within 3 seconds,the ICOS Application will start automatically...<br>
+					ICOS Startup -- Main Menu<br>
+					1 - Start ICOS Application<br>
+					2 - Display Utility Menu--<br>
+					Select (1, 2): [type 2] and and pressing “ENTER”  to <b>Display Utility Menu</b><br><br>
+					ICOS Startup Rev: 3.4.3<br>
+					ICOS Startup -- Utility Menu--<br>
+					1 - Start ICOS Application<br>
+					2 - Load Code Update Package<br>
+					3 - Load Configuration<br>
+					4 - Select Serial Speed<br>
+					5 - Retrieve Error Log<br>
+					6 - Erase Current Configuration<br>
+					7 - Erase Permanent Storage<br>
+					8 - Select Boot Method<br>
+					9 - Activate Backup Image<br>
+					10 - Start Diagnostic Application<br>
+					11 - Reboot<br>
+					12 - Erase All Configuration Files<br>
+					Q - Quit from ICOS Startup<br><br>
+					Typing “6” and pressing [ENTER] to <b>Erase Current Configuration.</b><br>
+					Select option eleven by typing “11” and pressing [ENTER] to Reboot.<br>
+					Switch will be visible on switch builder after Reboot.</td>
+            </tr>
+			
+			<tr>
+                <td>Switch Builder - Wiping/Rebuild</td>
+                <td>ACCTON Blue 7762</td>
+                <td>Console with one of these baudrates (115200 or 9600)<br><br>Interrupt the boot procedure when the prompt says:<br>
+				TYPE 123 [ENTER] to STOP autoboot<br><br>
+				=>env default -f -a<br>
+				=>saveenv<br>
+				=>reset</td>
+            </tr>
+			
+			<tr>
+                <td>Switch Builder - Wiping/Rebuild</td>
+                <td>ACCTON Red 7772</td>
+                <td>Console with one of these baudrates (115200 or 9600)<br><br>Interrupt the boot procedure when the prompt says:<br>
+				TYPE 123 [ENTER] to STOP autoboot<br><br>
+				=>env default -f -a<br>
+				=>saveenv<br>
+				=>reset<br><br>
+				
+				Once the device boots, the device will show a prompt from ONIE (Installer Mode Enabled)<br>
+				Use the follow commands;<br>
+				=>at /proc/mtd<br><br>
+				
+				Look for the line where it’s written "open" and look at the "mtd" number.<br>
+				[example]<br>
+				(...) <br>
+				** Installer Mode Enabled **<br>
+				ONIE:/ # cat /proc/mtd<br>
+				dev:    size   erasesize  name<br>
+				mtd0: 00020000 00020000 "RCW"<br>
+				mtd1: 00020000 00020000 "hw-info"<br>
+				mtd2: 02000000 00020000 "onie"<br>
+				mtd3: 02000000 00020000 "diag"<br>
+				mtd4: 03ec0000 00020000 "open"<br>
+				mtd5: 00020000 00020000 "Fman-FW"<br>
+				mtd6: 00020000 00020000 "uboot-env"<br>
+				mtd7: 000c0000 00020000 "uboot"<br>
+				ONIE:/ #<br><br>
+				
+			    On the above example, the mtd number is 4. Change the below command depending on your number.<br>
+				=>flash_erase /dev/mtd4 0 0<br><br>
+				
+				Once the erasing is at 100% complete, use the below command:<br>
+				=>Reboot<br><br>
+				
+				After Reboot, device should show up on Switchbuilder.</td>
+            </tr>
+			
+			
+            <tr>
+                <td>hosts</td>
+                <td>For Prod</td>
+                <td>curl dco.amazon.com/tps | env bash</td>
+            </tr>
+            <tr>
+                <td>hosts</td>
+                <td>Checkhost</td>
+                <td>curl dco.amazon.com/DCOSE/checkhost.sh | env bash</td>
+            </tr>
+            <tr>
+                <td>hosts</td>
+                <td>AutoDiag For Tankers</td>
+                <td>curl dco.amazon.com/mward/dcodiag/hosts/prod_tanker12.sh | env bash</td>
+            </tr>
+            <tr>
+                <td>hosts</td>
+                <td>DCODiags (w/o networking)</td>
+                <td>/opt/datatech/dcodiag</td>
+            </tr>
+            <tr>
+                <td>Network Uplinks</td>
+                <td>Gather network uplink data</td>
+                <td>curl dco.amazon.com/network-uplinks | bash</td>
+            </tr>
+            <tr>
+                <td>Console Information</td>
+                <td>Retrieve console details</td>
+                <td>curl dco.amazon.com/console-info | bash</td>
+            </tr>
+            <tr>
+                <td>Software Raid Devices</td>
+                <td>Information about RAID devices</td>
+                <td>curl dco.amazon.com/raid-info | bash</td>
+            </tr>
+            <tr>
+                <td>Smart Data</td>
+                <td>Gather smart data for drives</td>
+                <td>curl dco.amazon.com/smart-data | bash</td>
+            </tr>
+            <tr>
+                <td>System Logs</td>
+                <td>Decoded SEL logs and errors</td>
+                <td>curl dco.amazon.com/system-logs | bash</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function showContent(section, element) {
+        const sections = ['dashboard', 'sev-monitor', 'queue-monitor', 'toolkit'];
+        const sidebarLinks = document.querySelectorAll('.sidebar a');
+
+        sections.forEach(sec => {
+            document.getElementById(sec).classList.add('hidden');
+        });
+        document.getElementById(section).classList.remove('hidden');
+
+        sidebarLinks.forEach(link => link.classList.remove('active'));
+        element.classList.add('active');
+    }
+
+    function showTopMenu(menu, element) {
+        const menus = ['common-bookmarks', 'wiki-resources', 'domains-collection', 'updates'];
+        const topMenuLinks = document.querySelectorAll('.top-menu a');
+        
+        menus.forEach(m => {
+            document.getElementById(m).classList.add('hidden');
+        });
+        document.getElementById(menu).classList.remove('hidden');
+        
+        topMenuLinks.forEach(link => link.classList.remove('active'));
+        element.classList.add('active');
+
+        // Toggle visibility of bookmarks search bar
+        const bookmarksSearchBar = document.getElementById('bookmarksSearchBar');
+        if (menu === 'common-bookmarks') {
+            bookmarksSearchBar.style.display = 'flex';
+        } else {
+            bookmarksSearchBar.style.display = 'none';
+        }
+		
+		// Toggle visibility of wiki resources search bar
+		const wikiSearchBar = document.getElementById('wikiSearchBar');
+        if (menu === 'wiki-resources') {
+            wikiSearchBar.style.display = 'flex';
+        } else {
+            wikiSearchBar.style.display = 'none';
+        }
+    }
+
+    function searchToolkit() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const table = document.getElementById('toolkitTable');
+        const rows = table.getElementsByTagName('tr');
+
+        for (let i = 1; i < rows.length; i++) {
+            const cells = rows[i].getElementsByTagName('td');
+            let found = false;
+
+            for (let j = 0; j < cells.length; j++) {
+                if (cells[j].innerText.toLowerCase().includes(input)) {
+                    found = true;
+                    break;
+                }
+            }
+
+            if (found || input === "") {
+                rows[i].style.display = "table-row";
+            } else {
+                rows[i].style.display = "none";
+            }
+        }
+    }
+</script>
+
+    <footer style="margin-top: 20px; text-align: center; padding: 10px; background-color: #1e1e1e; color: #ffffff; font-size: 14px;">
+        <b style="color: red;">made possible with the help of:</b> coffee, coffee & coffee  &#10084 <br>
+        
+    </footer>
+
+    <script>
+        function searchBookmarks() {
+            const input = document.getElementById('bookmarksSearchInput').value.toLowerCase();
+            const table = document.getElementById('bookmarksTable');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let found = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].innerText.toLowerCase().includes(input)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found || input === "") {
+                    rows[i].style.display = "table-row";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+		
+		// Search function for wiki-resources
+		function searchwikiresource() {
+            const input = document.getElementById('wikiSearchInput').value.toLowerCase();
+            const table = document.getElementById('wiki-resources');
+            const rows = table.getElementsByTagName('tr');
+
+            for (let i = 1; i < rows.length; i++) {
+                const cells = rows[i].getElementsByTagName('td');
+                let found = false;
+
+                for (let j = 0; j < cells.length; j++) {
+                    if (cells[j].innerText.toLowerCase().includes(input)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (found || input === "") {
+                    rows[i].style.display = "table-row";
+                } else {
+                    rows[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+
+</body>
+</html>
